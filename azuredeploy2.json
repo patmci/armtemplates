@@ -1,0 +1,476 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+				
+		"Function TimeZone" : {
+			"defaultValue" : "085 - (GMT) GMT Standard Time - Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London",
+			"type" : "string",
+			"allowedValues" : [
+				"000 - (GMT-12:00) Dateline Standard Time - International Date Line West",
+				"001 - (GMT-11:00) Midway Island, Samoa - Midway Island, Samoa",
+				"002 - (GMT-10:00) Hawaiian Standard Time - Hawaii",
+				"003 - (GMT-09:00) Alaskan Standard Time - Alaska",
+				"004 - (GMT-08:00) Pacific Standard Time - Pacific Time (US and Canada); Tijuana",
+				"010 - (GMT-08:00) Mountain Standard Time - Mountain Time (US and Canada)",
+				"013 - (GMT-07:00) Mexico Standard Time 2 - Chihuahua, La Paz, Mazatlan",
+				"015 - (GMT-07:00) U.S. Mountain Standard Time - Arizona",
+				"020 - (GMT-06:00) Central Standard Time - Central Time (US and Canada)",
+				"025 - (GMT-06:00) Canada Central Standard Time - Saskatchewan",
+				"030 - (GMT-06:00) Mexico Standard Time - Guadalajara, Mexico City, Monterrey",
+				"033 - (GMT-06:00) Central America Standard Time - Central America",
+				"035 - (GMT-05:00) Eastern Standard Time - Eastern Time (US and Canada)",
+				"040 - (GMT-05:00) U.S. Eastern Standard Time - Indiana (East)",
+				"045 - (GMT-05:00) S.A. Pacific Standard Time - Bogota, Lima, Quito",
+				"050 - (GMT-04:00) Atlantic Standard Time - Atlantic Time (Canada)",
+				"055 - (GMT-04:00) S.A. Western Standard Time - Caracas, La Paz",
+				"056 - (GMT-04:00) Pacific S.A. Standard Time - Santiago",
+				"060 - (GMT-03:30) Newfoundland and Labrador Standard Time - Newfoundland and Labrador",
+				"065 - (GMT-03:00) E. South America Standard Time - Brasilia",
+				"070 - (GMT-03:00) S.A. Eastern Standard Time - Buenos Aires, Georgetown",
+				"073 - (GMT-03:00) Greenland Standard Time - Greenland",
+				"075 - (GMT-02:00) Mid-Atlantic Standard Time - Mid-Atlantic",
+				"080 - (GMT-01:00) Azores Standard Time - Azores",
+				"083 - (GMT-01:00) Cape Verde Standard Time - Cape Verde Islands",
+				"085 - (GMT) GMT Standard Time - Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London",
+				"090 - (GMT) Greenwich Standard Time - Casablanca, Monrovia",
+				"095 - (GMT+01:00) Central Europe Standard Time - Belgrade, Bratislava, Budapest, Ljubljana, Prague",
+				"100 - (GMT+01:00) Central European Standard Time - Sarajevo, Skopje, Warsaw, Zagreb",
+				"105 - (GMT+01:00) Romance Standard Time - Brussels, Copenhagen, Madrid, Paris",
+				"110 - (GMT+01:00) W. Europe Standard Time - Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna",
+				"113 - (GMT+01:00) W. Central Africa Standard Time - West Central Africa",
+				"115 - (GMT+02:00) E. Europe Standard Time - Bucharest",
+				"120 - (GMT+02:00) Egypt Standard Time - Cairo",
+				"125 - (GMT+02:00) FLE Standard Time - Helsinki, Kiev, Riga, Sofia, Tallinn, Vilnius",				
+				"130 - (GMT+02:00) GTB Standard Time - Athens, Istanbul, Minsk",
+				"135 - (GMT+02:00) Israel Standard Time - Jerusalem",			
+				"140 - (GMT+02:00) South Africa Standard Time - Harare, Pretoria",			
+				"145 - (GMT+03:00) Russian Standard Time - Moscow, St. Petersburg, Volgograd",			
+				"150 - (GMT+03:00) Arab Standard Time - Kuwait, Riyadh",				
+				"155 - (GMT+03:00) E. Africa Standard Time - Nairobi",	
+				"158 - (GMT+03:00) Arabic Standard Time - Baghdad",	
+				"160 - (GMT+03:00) Iran Standard Time - Tehran",	
+				"165 - (GMT+04:00) Arabian Standard Time - Abu Dhabi, Muscat",	
+				"170 - (GMT+04:00) Caucasus Standard Time - Baku, Tbilisi, Yerevan",	
+				"175 - (GMT+04:30) Transitional Islamic State of Afghanistan Standard Time - Kabul",	
+				"180 - (GMT+05:00) Ekaterinburg Standard Time - Ekaterinburg",	
+				"185 - (GMT+05:00) West Asia Standard Time - Islamabad, Karachi, Tashkent",	
+				"190 - (GMT+05:30) India Standard Time - Chennai, Kolkata, Mumbai, New Delhi",
+				"193 - (GMT+05:45) Nepal Standard Time - Kathmandu",
+				"195 - (GMT+06:00) Central Asia Standard Time - Astana, Dhaka",
+				"200 - (GMT+06:00) Sri Lanka Standard Time - Sri Jayawardenepura",
+				"201 - (GMT+06:00) N. Central Asia Standard Time - Almaty, Novosibirsk",
+				"203 - (GMT+06:30) Myanmar Standard Time - Yangon Rangoon",
+				"205 - (GMT+07:00) S.E. Asia Standard Time - Bangkok, Hanoi, Jakarta",
+				"207 - (GMT+07:00) North Asia Standard Time - Krasnoyarsk",
+				"210 - (GMT+08:00) China Standard Time - Beijing, Chongqing, Hong Kong SAR, Urumqi",
+				"215 - (GMT+08:00) Singapore Standard Time - Kuala Lumpur, Singapore",
+				"220 - (GMT+08:00) Taipei Standard Time - Taipei",
+				"225 - (GMT+08:00) W. Australia Standard Time - Perth",
+				"227 - (GMT+08:00) North Asia East Standard Time  Irkutsk, Ulaanbaatar",
+				"230 - (GMT+09:00) Korea Standard Time - Seoul",		
+				"235 - (GMT+09:00) Tokyo Standard Time - Osaka, Sapporo, Tokyo",		
+				"240 - (GMT+09:00) Yakutsk Standard Time - Yakutsk",						
+				"245 - (GMT+09:30) A.U.S. Central Standard Time - Darwin",		
+				"250 - (GMT+09:30) Cen. Australia Standard Time - Adelaide",		
+				"255 - (GMT+10:00) A.U.S. Eastern Standard Time - Canberra, Melbourne, Sydney",		
+				"260 - (GMT+10:00) E. Australia Standard Time - Brisbane",		
+				"265 - (GMT+10:00) Tasmania Standard Time - Hobart",		
+				"270 - (GMT+10:00) Vladivostok Standard Time - Vladivostok",		
+				"275 - (GMT+10:00) West Pacific Standard Time - Guam, Port Moresby",		
+				"280 - (GMT+11:00) Central Pacific Standard Time - Magadan, Solomon Islands, New Caledonia",		
+				"285 - (GMT+12:00) Fiji Islands Standard Time - Fiji Islands, Kamchatka, Marshall Islands",		
+				"290 - (GMT+12:00) New Zealand Standard Time - Auckland, Wellington",		
+				"300 - (GMT+13:00) Tonga Standard Time - Nuku'alofa",					
+			]
+		},
+		
+		"N52 Azure AD ClientID" : {
+			"defaultValue" : "ID of the Azure App Registration",
+			"type" : "string"
+		},
+		"N52 Azure AD App Key" : {
+			"defaultValue" : "Secret Key for Azure App",
+			"type" : "string"
+		},
+		"N52 Azure Tenant ID" : {
+			"defaultValue" : "Guid of Tenant that App Registration Exists In",
+			"type" : "string"
+		},		
+		"N52 Dynamics 365 URL" : {
+			"defaultValue" : "please enter your CRM Url here e.g north52.crm4.dynamics.com",
+			"type" : "string"
+        },		
+        
+        "N52 Function App Name" : {
+			"defaultValue" : "Name of Function App, eg. PDFGeneration",
+			"type" : "string"
+        },
+        
+        "Service Bus Name" :{
+            "defaultValue": "n52sbservicebus1",
+            "type" : "string"
+        },
+
+        "Service Bus Queue Name" :{
+            "defaultValue": "quotes",
+            "type" : "string"
+        },
+
+        "Azure Storage Templates Container" : {
+            "defaultValue": "doctemplates",
+            "type": "string"
+        },
+
+        "Azure Storage Account Name" : {
+            "defaultValue" : "storageacwb1",
+            "type" : "string"
+        },
+
+        "Storage Account Type": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+              "Standard_LRS",
+              "Standard_GRS",
+              "Standard_ZRS",
+              "Premium_LRS"
+            ],
+            "metadata": {
+              "description": "Storage Account type"
+            }
+        }
+    },
+	
+    "variables": {
+		
+		"config_web_name" : "web",
+		"Website URL Binding" : "[concat(parameters('N52 Function App Name'), '.azurewebsites.net')]",
+		"Azure App ServicePlan Name" : "[concat('N52Azure-PL-', parameters('N52 Function App Name'))]",
+		"N52 App Insights" : "[concat('N52BPA-AI-', parameters('N52 Function App Name'))]",
+        "TimeZone" : "[take(parameters('Function TimeZone'), 3)]"
+
+    },
+    
+    "resources": [
+		{
+			"apiVersion": "2017-04-01",
+			"name": "[parameters('Service Bus Name')]",
+			"type": "Microsoft.ServiceBus/namespaces",
+			"location": "[resourceGroup().location]",
+			"kind": "Messaging",
+			"sku": {
+				"name": "Basic",
+				"tier": "Basic"
+            },
+            "properties": {
+                
+            },
+			"resources": [{
+				"apiVersion": "2017-04-01",
+				"name": "[parameters('Service Bus Queue Name')]",
+				"type": "queues",
+				"dependsOn": [
+					"[concat('Microsoft.ServiceBus/namespaces/', parameters('Service Bus Name'))]"
+				],
+				"properties": {
+					"path": "[parameters('Service Bus Queue Name')]"
+				}
+			}]
+		},	
+		{
+			"name" : "[variables('N52 App Insights')]",
+			"type": "Microsoft.Insights/components",
+			"apiVersion": "2015-05-01",
+			"location": "[resourceGroup().location]",
+			"tags" : {},
+			"kind": "other",
+			"properties": {
+				"Application_Type": "web"
+			  }
+		},
+
+		
+	
+	
+        {
+            "comments": "",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('Azure Storage Account Name')]",
+            "apiVersion": "2016-01-01",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "scale": null,
+            "properties": {},
+            "dependsOn": []
+        },
+
+        {	
+            "comments": "",
+			"name": "[variables('Azure App ServicePlan Name')]",
+            "type": "Microsoft.Web/serverfarms",
+			"apiVersion": "2016-09-01",
+			"kind": "functionapp", 
+			"properties": {
+                "perSiteScaling": false,
+                "reserved": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0
+            },
+            "sku": {
+                "name": "Y1",
+                "tier": "Dynamic",
+                "size": "Y1",
+                "family": "Y",
+                "capacity": 0
+            },
+            "location": "[resourceGroup().location]",
+            "scale": null,
+            "dependsOn": []
+        },
+        {
+            "comments": "",
+            "type": "Microsoft.Web/sites",
+            "kind": "functionapp",
+            "name": "[variables('N52 Azure Function Name')]",
+            "apiVersion": "2016-08-01",
+            "location": "[resourceGroup().location]",
+            "scale": null,
+            "properties": {
+			
+				"siteConfig": {
+				
+					"appSettings" : [
+                        { "name": "AzureStorageConnectionString" ,
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('Azure Storage Account Name'), ';AccountKey=', listKeys(parameters('Azure Storage Account Name'),'2015-05-01-preview').key1)]"
+                        
+                        },
+				
+						{
+							"name": "AzureWebJobsStorage",
+							"value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('Azure Storage Account Name'), ';AccountKey=', listKeys(parameters('Azure Storage Account Name'),'2015-05-01-preview').key1)]"
+						},
+						{
+							"name": "FUNCTIONS_EXTENSION_VERSION",
+							"value": "beta"
+						},
+						{
+							"name": "AzureWebJobsDashboard",
+							"value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('Azure Storage Account Name'), ';AccountKey=', listKeys(parameters('Azure Storage Account Name'),'2015-05-01-preview').key1)]"
+						},
+                        {
+                            "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('Azure Storage Account Name'), ';AccountKey=', listKeys(parameters('Azure Storage Account Name'),'2015-05-01-preview').key1)]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTSHARE",
+                            "value": "[toLower(variables('N52 Azure Function Name'))]"
+                        },						
+						{
+							"name" : "AppId",
+							"value" : "[parameters('N52 Azure AD ClientID')]"
+						},						
+						{
+							"name" : "AppKey",
+							"value" : "[parameters('N52 Azure AD App Key')]"
+						},						
+						{
+							"name" : "TenantId",
+							"value" : "[parameters('N52 Azure Tenant ID')]"
+						},				
+						{
+							"name" : "DynamicsURL",
+							"value" : "[parameters('N52 Dynamics 365 URL')]"
+						},
+						{
+							"name" : "BlobStorageContainerName",
+							"value" : "[parameters('N52 Additional Logging')]"
+						},
+						{
+							"name" : "APPINSIGHTS_INSTRUMENTATIONKEY",
+							"value" : "[reference(resourceId('Microsoft.Insights/components', variables('N52 App Insights')), '2015-05-01').InstrumentationKey]"
+						},
+						{
+							"name" : "WEBSITE_TIME_ZONE",
+							"value" : "[variables('TimeZone')]"
+						}
+					]
+				},
+			
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(variables('N52 Azure Function Name'),'n52azfunction.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": "",
+                        "thumbprint": "",
+                        "toUpdate": true,
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(variables('N52 Azure Function Name'),'n52azfunction.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Repository"
+                    }		
+					
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('Azure App ServicePlan Name'))]",
+                "reserved": false,
+                "scmSiteAlsoStopped": false,
+                "hostingEnvironmentProfile": null,
+                "clientAffinityEnabled": false,
+                "clientCertEnabled": false,
+                "hostNamesDisabled": false,
+                "containerSize": 1536,
+                "dailyMemoryTimeQuota": 0,
+                "cloningInfo": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('Azure App ServicePlan Name'))]",
+				"[resourceId('Microsoft.Storage/storageAccounts', parameters('Azure Storage Account Name'))]"
+            ]
+        },
+        {
+            "comments": "",
+            "type": "Microsoft.Web/sites/config",
+            "name": "[concat(variables('N52 Azure Function Name'), '/', variables('config_web_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "[resourceGroup().location]",
+            "scale": null,
+            "properties": {
+                "numberOfWorkers": "1",
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v4.0",
+                "phpVersion": "5.6",
+				"minTlsVersion": "1.2",
+                "pythonVersion": "",
+                "nodeVersion": "",
+                "linuxFxVersion": "",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": null,
+                "httpLoggingEnabled": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$N52AzFunction",
+                "publishingPassword": null,
+                "appSettings": null,
+                "metadata": null,
+                "connectionStrings": null,
+                "machineKey": null,
+                "handlerMappings": null,
+                "documentRoot": null,
+                "scmType": "None",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": false,
+                "javaVersion": null,
+                "javaContainer": null,
+                "javaContainerVersion": null,
+                "appCommandLine": "",
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false,
+                        "virtualDirectories": null
+                    }
+                ],
+                "winAuthAdminState": 0,
+                "winAuthTenantState": 0,
+                "customAppPoolIdentityAdminState": false,
+                "customAppPoolIdentityTenantState": false,
+                "runtimeADUser": null,
+                "runtimeADUserPassword": null,
+                "loadBalancing": "LeastRequests",
+                "routingRules": [],
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "limits": null,
+                "autoHealEnabled": false,
+                "autoHealRules": {
+                    "triggers": null,
+                    "actions": null
+                },
+                "tracingOptions": null,
+                "vnetName": "",
+                "siteAuthEnabled": false,
+                "siteAuthSettings": {
+                    "enabled": null,
+                    "unauthenticatedClientAction": null,
+                    "tokenStoreEnabled": null,
+                    "allowedExternalRedirectUrls": null,
+                    "defaultProvider": null,
+                    "clientId": null,
+                    "clientSecret": null,
+                    "issuer": null,
+                    "allowedAudiences": null,
+                    "additionalLoginParams": null,
+                    "isAadAutoProvisioned": false,
+                    "googleClientId": null,
+                    "googleClientSecret": null,
+                    "googleOAuthScopes": null,
+                    "facebookAppId": null,
+                    "facebookAppSecret": null,
+                    "facebookOAuthScopes": null,
+                    "twitterConsumerKey": null,
+                    "twitterConsumerSecret": null,
+                    "microsoftAccountClientId": null,
+                    "microsoftAccountClientSecret": null,
+                    "microsoftAccountOAuthScopes": null
+                },
+                "cors": {
+                    "allowedOrigins": [
+                        "https://functions.azure.com",
+                        "https://functions-staging.azure.com",
+                        "https://functions-next.azure.com"
+                    ]
+                },
+                "push": null,
+                "apiDefinition": null,
+                "autoSwapSlotName": null,
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', variables('N52 Azure Function Name'))]"
+            ]
+        },
+        {
+            "comments": "",
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "name": "[concat(variables('N52 Azure Function Name'), '/', variables('Website URL Binding'))]",
+            "apiVersion": "2016-08-01",
+            "location": "[resourceGroup().location]",
+            "scale": null,
+            "properties": {
+                "siteName": "N52AzFunction",
+                "domainId": null,
+                "hostNameType": "Verified"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', variables('N52 Azure Function Name'))]"
+            ]
+        }	
+    ]
+}
